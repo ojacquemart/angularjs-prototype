@@ -1,0 +1,10 @@
+{
+   "HOME": {
+      "TITLE": "Marvelous angularJS app",
+      "HEADER": "'Allo, 'Allo from angular!"
+   },
+    "SEARCH": {
+        "TITLE": "Let's search!",
+        "HEADER": "Go search..."
+    }
+}

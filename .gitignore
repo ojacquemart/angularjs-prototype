@@ -1,0 +1,8 @@
+node_modules
+dist
+.tmp
+.sass-cache
+src/bower_components/
+src/app/config.js
+.idea/
+*.iml
