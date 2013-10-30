@@ -39,6 +39,9 @@ module.exports = function (grunt) {
    } catch (e) {
    }
 
+   /**
+   * Gets the ngConstant configuration by environment.
+   */
    var getNgConstant = function(env) {
       return {
          dest: '<%= yeoman.src %>/<%= yeoman.app %>/config.js',
@@ -49,6 +52,9 @@ module.exports = function (grunt) {
       };
    };
 
+   /**
+   * Gets the build tasks by environment,
+   */
    var getBuild = function(env) {
       return [
          'clean:dist',
@@ -87,7 +93,14 @@ module.exports = function (grunt) {
 
    grunt.registerTask('test', [ 'clean:server', 'concurrent:test', 'autoprefixer', 'connect:test', 'karma' ]);
 
+   /**
+    *  The `dev` task gets your app ready to run for development and testing.
+    */
    grunt.registerTask('dev', getBuild('dev'));
+
+   /**
+    *  The `build` and `prod `tasks get your app ready to deploy for production.
+    */
    grunt.registerTask('prod', getBuild('prod'));
    grunt.registerTask('build', getBuild('prod'));
 
@@ -95,6 +108,10 @@ module.exports = function (grunt) {
 
    grunt.initConfig({
       yeoman: yeomanConfig,
+      /**
+       * ngConstant generates AngularJS constants files reading given JSON files.
+       * @see config/*.json.
+       */
       ngconstant: {
          options: {
             // Task-specific options go here.
@@ -102,6 +119,12 @@ module.exports = function (grunt) {
          dev: getNgConstant('dev'),
          prod: getNgConstant('prod')
       },
+      /**
+      * ngTemplates is a Grunt plugin that takes all of your template files and
+      * places them into JavaScript files as strings that are added to
+      * AngularJS's template cache. This means that the templates too become
+      * part of the initial payload as one JavaScript file. Neat!
+      */
       ngtemplates: {
          app: {
             options: {
@@ -144,9 +167,12 @@ module.exports = function (grunt) {
             ]
          }
       },
+      /**
+       * Connection configuration to detect changes during devlopment and reload your browsers.
+       */
       connect: {
          options: {
-            port: 9000,
+            port: 9001,
             // Change this to '0.0.0.0' to access the server from outside.
             hostname: 'localhost'
          },
@@ -181,11 +207,17 @@ module.exports = function (grunt) {
             }
          }
       },
+      /**
+       * Url to open for `grunt server`.
+       */
       open: {
          server: {
             url: 'http://localhost:<%= connect.options.port %>'
          }
       },
+      /**
+       * Clean some directories...
+       */
       clean: {
          dist: {
             files: [
@@ -210,6 +242,9 @@ module.exports = function (grunt) {
          },
          server: '.tmp'
       },
+      /**
+       * Javascript coding stlye.
+       */
       jshint: {
          options: {
             jshintrc: '.jshintrc'
@@ -222,6 +257,9 @@ module.exports = function (grunt) {
       // not used since Uglify task does concat,
       // but still available if needed
       /*concat: { }*/
+      /**
+       * Prefixes assets javascripts and css by a hash to cache static files for production.
+       */
       rev: {
          dist: {
             options: {

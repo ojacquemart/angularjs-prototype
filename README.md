@@ -20,7 +20,7 @@ The following commands must all be run from the root directory:
 
 The following commands can be run:
 
- - `grunt server`: starts a web server on port 9000, serving the files under `src`, watching files modifications.
+ - `grunt server`: starts a web server on port 9001, serving the files under `src`, watching files modifications.
  - `grunt test`: runs the unit tests.
  - `grunt e2e`: TODO
 
